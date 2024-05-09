@@ -16,6 +16,7 @@ const Assignment = ({ assignment }) => {
           <p>Title: {title}</p>
           <p>Difficulty Level: {difficulty}</p>
           <p>Marks: {marks}</p>
+          <p>Deadline: --/--/--</p>
           <div className="card-actions justify-end">
             <button className="btn btn-circle bg-red">
               <FaEye />

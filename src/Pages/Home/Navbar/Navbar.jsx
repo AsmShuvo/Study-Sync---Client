@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/images/logo/logo.png";
 const Navbar = () => {
   return (
-    <div className="px-4 pt-2">
+    <div className="px-4 pt-2 ">
       <div className="navbar bg-[#140D0d] rounded-xl">
         <div className="navbar-start">
           <div className="dropdown">
@@ -84,4 +84,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
