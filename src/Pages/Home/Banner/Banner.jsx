@@ -98,16 +98,6 @@ const Banner = () => {
             </div>
           </div>
         </section>
-        <section class="about">
-          <div class="about__container">
-            <div class="about__text">
-              <h2>
-                We create without the need for coding to give ambitious brands
-                the upper hand
-              </h2>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
