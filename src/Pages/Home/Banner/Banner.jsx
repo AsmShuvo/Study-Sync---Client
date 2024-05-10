@@ -11,17 +11,17 @@ const Banner = () => {
       <main>
         <section id="hero">
           {/* <!----------------- container starts -----------------------> */}
-          <div class="container">
-            <div class="hero__text">
-              <div class="sub__header">
-                <div class="circle"></div>
+          <div className="container">
+            <div className="hero__text">
+              <div className="sub__header">
+                <div className="circle"></div>
                 <h4>Collaborative Learning Together</h4>
               </div>
-              <h1 class="text-7xl text-start col-span-12">
+              <h1 className="text-7xl text-start col-span-12">
                 StudySync Invites You to Collaborate and Succeed
               </h1>
             </div>
-            <div class="image__container">
+            <div className="image__container">
               <svg width="100%" height="100%" viewBox="0 0 100 40">
                 <clipPath id="border">
                   <path
@@ -57,42 +57,42 @@ const Banner = () => {
                 ></image>
               </svg>
             </div>
-            <div class="carousel">
-              <div class="left__carousel"></div>
-              <div class="right__carousel"></div>
-              <div class="carousel__inner">
-                <div class="item">
+            <div className="carousel">
+              <div className="left__carousel"></div>
+              <div className="right__carousel"></div>
+              <div className="carousel__inner">
+                <div className="item">
                   <img src={logo1} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo2} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo3} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo4} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo1} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo2} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo3} />
                 </div>
-                <div class="item">
+                <div className="item">
                   <img src={logo4} />
                 </div>
               </div>
             </div>
           </div>
           {/* <!----------------- container ends -----------------------> */}
-          <div class="bottom__div">
-            <div class="left"></div>
-            <div class="right">
-              <div class="services">
+          <div className="bottom__div">
+            <div className="left"></div>
+            <div className="right">
+              <div className="services">
                 <h5>Services</h5>
               </div>
             </div>

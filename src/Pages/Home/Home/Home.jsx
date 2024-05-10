@@ -4,6 +4,7 @@ import Assignment from "../Assignment/Assignment";
 import Assignments from "../Assignments/Assignments";
 import Features from "../Features/Features";
 import FAQ from "../FAQ/FAQ";
+import AssignmentDetails from "../AssignmentDetails/AssignmentDetails";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Assignments />
       <Features />
       <FAQ />
+      <AssignmentDetails />
     </div>
   );
 };

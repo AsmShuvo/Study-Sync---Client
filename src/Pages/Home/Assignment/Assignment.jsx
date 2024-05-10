@@ -2,6 +2,7 @@ import React from "react";
 import { FaPen } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Assignment = ({ assignment }) => {
   const { _id, subject, image, title, difficulty, details, marks, deadline } =
@@ -25,9 +26,11 @@ const Assignment = ({ assignment }) => {
           <p>Marks: {marks}</p>
           <p>Deadline:{formattedDeadline}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-circle bg-red">
-              <FaEye />
-            </button>
+            <Link to={`/assignment/${_id}`}>
+              <button className="btn btn-circle bg-red">
+                <FaEye />
+              </button>
+            </Link>
             <button className="btn btn-circle bg-red">
               <MdDeleteForever />
             </button>
