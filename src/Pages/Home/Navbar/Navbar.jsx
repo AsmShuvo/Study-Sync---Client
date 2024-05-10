@@ -39,13 +39,10 @@ const Navbar = () => {
             <li>
               <NavLink to="/reviews">Reviews</NavLink>
             </li>
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="dropdown dropdown-end">
+          {/* <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -71,12 +68,32 @@ const Navbar = () => {
               <li>
                 <NavLink to="/reviews">Reviews</NavLink>
               </li>
-              <li>
-                <NavLink to="/register">Register</NavLink>
-              </li>
             </ul>
+          </div> */}
+          <div>
+            <div className="navbar-end flex gap-1 w-full">
+              <Link
+                to="/login"
+                class="group relative rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
+              >
+                <span class="absolute inset-y-0 left-0 w-[2px] bg-red transition-all group-hover:w-full group-active:bg-red"></span>
+
+                <button class="relative text-sm font-semibold text-red transition-colors group-hover:text-white">
+                  Login
+                </button>
+              </Link>
+              <Link
+                to="/register"
+                class="group relative rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
+              >
+                <span class="absolute inset-y-0 left-0 w-[2px] bg-red transition-all group-hover:w-full group-active:bg-red"></span>
+
+                <button class="relative text-sm font-semibold text-red transition-colors group-hover:text-white">
+                  Register
+                </button>
+              </Link>
+            </div>
           </div>
-          <a className="btn">Button</a>
         </div>
       </div>
     </div>

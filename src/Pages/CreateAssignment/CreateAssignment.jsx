@@ -14,7 +14,7 @@ const CreateAssignment = () => {
   };
   return (
     <div className="min-h-screen my-10">
-      <div className="m-8 bg-deep border-2 border-[#9753536b] rounded-xl shadow-2xl">
+      <div className="m-8 bg-deep border-[#9753536b] rounded-xl shadow-2xl">
         <div>
           <form className="card-body" onSubmit={handlePost}>
             <div className="space-y-2  ">
