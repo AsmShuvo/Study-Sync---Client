@@ -4,7 +4,14 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 
 const Assignment = ({ assignment }) => {
-  const { _id, subject, image, title, difficulty, details, marks } = assignment;
+  const { _id, subject, image, title, difficulty, details, marks, deadline } =
+    assignment;
+  // =====Convert deadline to a Date object=====
+  const deadlineDate = new Date(deadline);
+
+  // =====Format deadline to show only the date part=====
+  const formattedDeadline = deadlineDate.toLocaleDateString();
+
   return (
     <div className="mx-auto">
       <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -16,7 +23,7 @@ const Assignment = ({ assignment }) => {
           <p>Title: {title}</p>
           <p>Difficulty Level: {difficulty}</p>
           <p>Marks: {marks}</p>
-          <p>Deadline: --/--/--</p>
+          <p>Deadline:{formattedDeadline}</p>
           <div className="card-actions justify-end">
             <button className="btn btn-circle bg-red">
               <FaEye />

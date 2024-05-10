@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import Datepicker from "../../Date/Datepicker";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const CreateAssignment = () => {
+  const server_url = import.meta.env.VITE_SERVER_URL;
+  console.log(server_url);
+  const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
     const difficulty = form.difficulty.value;
-    const mark = form.mark.value;
+    const marks = form.mark.value;
     const photo = form.photo.value;
     const details = form.details.value;
-    const deadline = form.deadline.value;
-    console.log(title, difficulty, mark, details, deadline, photo);
+    console.log(title, difficulty, marks, details, deadline, photo);
+    const newAssignment = {
+      title,
+      difficulty,
+      marks,
+      details,
+      photo,
+      deadline,
+    };
+    axios.post(`${server_url}/assignments`, newAssignment).then((data) => {
+      console.log(data.data);
+      if (data.data.insertedId) {
+        Swal.fire("Assignment Created Succesfully");
+        form.reset();
+      }
+    });
   };
   return (
     <div className="min-h-screen my-10">
@@ -64,13 +84,7 @@ const CreateAssignment = () => {
               <label className="label">
                 <span className="label-text text-lg">Deadline</span>
               </label>
-              <input
-                type="text"
-                name="deadline"
-                placeholder="Due Date here"
-                className="input input-bordered w-full"
-                required
-              />
+              <Datepicker deadline={deadline} setDeadline={setDeadline} />
             </div>
             <div className=" ">
               <label className="label">
