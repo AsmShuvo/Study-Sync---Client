@@ -4,7 +4,6 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 
 const AssignmentDetails = () => {
   const assignments = useLoaderData();
-  console.log("Loaded Data:", assignments);
 
   const { _id, image, title, marks, difficulty, details, deadline } =
     assignments;
@@ -118,7 +117,7 @@ const AssignmentDetails = () => {
 
                 <button
                   type="button"
-                  className="h-10 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
+                  className="h-10 w-28 px-4 py-2 m-1 text-white transition-colors duration-200 transform bg-red rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400"
                 >
                   Take
                 </button>

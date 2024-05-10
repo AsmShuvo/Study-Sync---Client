@@ -3,15 +3,56 @@ import { FaPen } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-const Assignment = ({ assignment }) => {
+const Assignment = ({ assignment, assignments, setAssignments }) => {
   const { _id, subject, image, title, difficulty, details, marks, deadline } =
     assignment;
+  const server_url = import.meta.env.VITE_SERVER_URL;
+  console.log(server_url);
   // =====Convert deadline to a Date object=====
   const deadlineDate = new Date(deadline);
 
   // =====Format deadline to show only the date part=====
   const formattedDeadline = deadlineDate.toLocaleDateString();
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${server_url}/assignment/${id}`)
+          .then((data) => {
+            if (data.data.deletedCount > 0) {
+              console.log("DELETED DATA");
+              // Remove the deleted spot from userSpots
+              const updatedAssignments = assignments.filter(
+                (it) => it._id !== id
+              );
+              setAssignments(updatedAssignments);
+              Swal.fire("Deleted Successfully");
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting spot:", error);
+            // Optionally, you can show an error message to the user using Swal or another method
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: "Failed to delete spot",
+            });
+          });
+      }
+    });
+  };
 
   return (
     <div className="mx-auto">
@@ -31,7 +72,10 @@ const Assignment = ({ assignment }) => {
                 <FaEye />
               </button>
             </Link>
-            <button className="btn btn-circle bg-red">
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn btn-circle bg-red"
+            >
               <MdDeleteForever />
             </button>
             <button className="btn btn-circle bg-red">
