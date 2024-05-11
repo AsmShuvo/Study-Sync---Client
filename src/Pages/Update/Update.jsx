@@ -160,7 +160,7 @@ const Update = () => {
                 type="submit"
                 className="btn btn-wide bg-success text-white"
               >
-                Create Assignment
+                Uppdate Assignment
               </button>
               <p className="flex items-center gap-2 mt-4 text-green-500">
                 {" "}

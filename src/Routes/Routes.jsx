@@ -10,6 +10,7 @@ import Navbar from "./../Pages/Home/Navbar/Navbar";
 import AssignmentDetails from "./../Pages/Home/AssignmentDetails/AssignmentDetails";
 import Update from "../Pages/Update/Update";
 import { Take } from "../Pages/TakeAssignment/Take";
+import Attempted from "../Pages/Attempted/Attempted";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const router = createBrowserRouter([
@@ -66,6 +67,11 @@ const router = createBrowserRouter([
       {
         path: "/take_assignment",
         element: <Take />,
+      },
+      {
+        path: "/attempted",
+        element: <Attempted />,
+        loader: () => fetch(`${server_url}/submitted`),
       },
     ],
   },

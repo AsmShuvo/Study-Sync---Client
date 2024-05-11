@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AssignmentDetails = () => {
   const assignments = useLoaderData();
@@ -24,8 +25,23 @@ const AssignmentDetails = () => {
     const doc = form.doc.value;
     const note = form.note.value;
     const email = user?.email;
+    const obtained = null;
+    const pending_status = "Pending";
+    const feedback = "";
     console.log(doc, note, email);
-    const takenAssignment = { email, doc, note };
+    const takenAssignment = {
+      email,
+      doc,
+      note,
+      obtained,
+      pending_status,
+      feedback,
+      title,
+      marks,
+      difficulty,
+      details,
+      deadline,
+    };
     axios.post(`${server_url}/submitted`, takenAssignment).then((data) => {
       console.log(data.data);
       if (data.data.insertedId) {

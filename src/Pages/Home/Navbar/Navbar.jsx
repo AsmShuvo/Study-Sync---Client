@@ -39,6 +39,9 @@ const Navbar = () => {
               <li>
                 <NavLink to="/create">Create Assignment</NavLink>
               </li>
+              <li>
+                <NavLink to="/attempted">Show Attempted</NavLink>
+              </li>
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost text-xl">
@@ -58,6 +61,9 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/create">Create Assignment</NavLink>
+            </li>
+            <li>
+              <NavLink to="/attempted">Show Attempted</NavLink>
             </li>
           </ul>
         </div>
