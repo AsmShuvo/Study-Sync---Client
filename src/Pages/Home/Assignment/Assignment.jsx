@@ -54,6 +54,8 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
     });
   };
 
+  const hanldeUpdate = (e) => {};
+
   return (
     <div className="mx-auto">
       <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -78,9 +80,11 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
             >
               <MdDeleteForever />
             </button>
-            <button className="btn btn-circle bg-red">
-              <FaPen />
-            </button>
+            <Link to={`update/${_id}`}>
+              <button className="btn btn-circle bg-red">
+                <FaPen />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -8,9 +8,10 @@ import Register from "./../Pages/Register/Register";
 import Login from "./../Pages/Login/Login";
 import Navbar from "./../Pages/Home/Navbar/Navbar";
 import AssignmentDetails from "./../Pages/Home/AssignmentDetails/AssignmentDetails";
+import Update from "../Pages/Update/Update";
+import { Take } from "../Pages/TakeAssignment/Take";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
-console.log(server_url);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,9 +50,22 @@ const router = createBrowserRouter([
         element: <AssignmentDetails />,
         loader: ({ params }) => {
           const x = fetch(`${server_url}/assignment/${params.id}`);
-          console.log(x);
+          // console.log(x);
           return x;
         },
+      },
+      {
+        path: "/update/:id",
+        element: <Update />,
+        loader: ({ params }) => {
+          const x = fetch(`${server_url}/assignment/${params.id}`);
+          // console.log(x);
+          return x;
+        },
+      },
+      {
+        path: "/take_assignment",
+        element: <Take />,
       },
     ],
   },
