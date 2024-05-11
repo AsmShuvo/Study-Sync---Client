@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
+import axios from "axios";
 
 const AssignmentDetails = () => {
   const assignments = useLoaderData();
   console.log(assignments);
   const { _id, image, title, marks, difficulty, details, deadline } =
     assignments;
+  const server_url = import.meta.env.VITE_SERVER_URL;
+  // console.log(server_url);
   const deadlineDate = new Date(deadline);
   const formattedDeadline = deadlineDate.toLocaleDateString();
   const { user } = useContext(AuthContext);
@@ -14,6 +17,22 @@ const AssignmentDetails = () => {
   const handleShow = () => {
     setShow(!show);
     console.log(show);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const doc = form.doc.value;
+    const note = form.note.value;
+    const email = user?.email;
+    console.log(doc, note, email);
+    const takenAssignment = { email, doc, note };
+    axios.post(`${server_url}/submitted`, takenAssignment).then((data) => {
+      console.log(data.data);
+      if (data.data.insertedId) {
+        Swal.fire("Assignment Submitted Succesfully");
+        form.reset();
+      }
+    });
   };
   return (
     <div className="my-20">
@@ -227,23 +246,27 @@ const AssignmentDetails = () => {
                     Please give proper links of PDF/DOC of your assignment here
                   </p>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <input
-                    type="text"
-                    placeholder="PDF LINK HERE"
-                    className="input input-bordered input-error w-full max-w-xs"
-                  />
-                  <textarea
-                    placeholder="Bio"
-                    className="textarea textarea-bordered textarea-lg w-full max-w-xs"
-                  ></textarea>
-                  <a
-                    href="/"
-                    className="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none"
-                  >
-                    Get started
-                  </a>
-                </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="flex flex-col justify-center items-center">
+                    <input
+                      type="text"
+                      placeholder="PDF LINK HERE"
+                      name="doc"
+                      className="input input-bordered input-error w-full max-w-xs"
+                    />
+                    <textarea
+                      placeholder="Qiuck Note"
+                      name="note"
+                      className="textarea textarea-bordered textarea-lg w-full max-w-xs"
+                    ></textarea>
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center h-12 px-6 font-semibold tracking-wide transition duration-200 mt-4 text-white rounded shadow-md shadow-rose-300 hover:text-deep-purple-900 bg-teal-accent-400 hover:bg-deep-purple-accent-100 focus:shadow-outline focus:outline-none"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
