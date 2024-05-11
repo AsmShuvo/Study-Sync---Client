@@ -11,12 +11,15 @@ import AssignmentDetails from "./../Pages/Home/AssignmentDetails/AssignmentDetai
 import Update from "../Pages/Update/Update";
 import { Take } from "../Pages/TakeAssignment/Take";
 import Attempted from "../Pages/Attempted/Attempted";
+import Pending from "../Pages/Pending/Pending";
+import Error from "../Pages/Error/Error";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -72,6 +75,10 @@ const router = createBrowserRouter([
         path: "/attempted",
         element: <Attempted />,
         loader: () => fetch(`${server_url}/submitted`),
+      },
+      {
+        path: "/ppending",
+        element: <Pending />,
       },
     ],
   },

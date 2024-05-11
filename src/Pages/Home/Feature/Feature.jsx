@@ -5,8 +5,7 @@ const Feature = ({ title, desc, ratings, img }) => {
     <div className="mx-auto">
       <div>
         <div
-          className={`flex h-52 flex-col rounded-lg bg-red text-surface shadow-secondary-1 dark:bg-surface-dark p-1 dark:text-white md:max-w-xl md:flex-${
-            ratings % 2 ? "row-reverse" : "row"
+          className={`flex h-52 flex-col rounded-lg bg-red text-surface shadow-secondary-1 dark:bg-surface-dark p-1 dark:text-white md:max-w-xl md:flex-row
           }`}
         >
           <img
