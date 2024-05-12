@@ -13,6 +13,7 @@ import { Take } from "../Pages/TakeAssignment/Take";
 import Attempted from "../Pages/Attempted/Attempted";
 import Pending from "../Pages/Pending/Pending";
 import Error from "../Pages/Error/Error";
+import Evaluate from "../Pages/Home/Evaluate/Evaluate";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const router = createBrowserRouter([
@@ -58,15 +59,7 @@ const router = createBrowserRouter([
           return x;
         },
       },
-      {
-        path: "/update/:id",
-        element: <Update />,
-        loader: ({ params }) => {
-          const x = fetch(`${server_url}/assignment/${params.id}`);
-          // console.log(x);
-          return x;
-        },
-      },
+
       {
         path: "/take_assignment",
         element: <Take />,
@@ -77,8 +70,23 @@ const router = createBrowserRouter([
         loader: () => fetch(`${server_url}/submitted`),
       },
       {
-        path: "/ppending",
+        path: "/pending",
         element: <Pending />,
+        loader: () => fetch(`${server_url}/submitted`),
+      },
+      {
+        path: "/update/:id",
+        element: <Update />,
+        loader: ({ params }) => {
+          const x = fetch(`${server_url}/assignment/${params.id}`);
+          // console.log(x);
+          return x;
+        },
+      },
+      {
+        path: "/evaluate/:id",
+        element: <Evaluate />,
+        loader: () => fetch(`${server_url}/submitted`),
       },
     ],
   },

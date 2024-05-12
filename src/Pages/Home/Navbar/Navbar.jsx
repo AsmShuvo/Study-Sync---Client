@@ -4,7 +4,7 @@ import logo from "../../../assets/images/logo/logo.png";
 import { AuthContext } from "./../../../Providers/AuthProviders";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <div className="navbar bg-[#140D0d]">
@@ -45,6 +45,9 @@ const Navbar = () => {
               <li>
                 <NavLink to="/attempted">Show Attempted</NavLink>
               </li>
+              <li>
+                <NavLink to="/pending">Pending</NavLink>
+              </li>
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost text-xl">
@@ -67,6 +70,9 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/attempted">Show Attempted</NavLink>
+            </li>
+            <li>
+              <NavLink to="/pending">Pending</NavLink>
             </li>
           </ul>
         </div>
