@@ -14,6 +14,7 @@ import Attempted from "../Pages/Attempted/Attempted";
 import Pending from "../Pages/Pending/Pending";
 import Error from "../Pages/Error/Error";
 import Evaluate from "../Pages/Home/Evaluate/Evaluate";
+import PrivateRoute from "../Layout/PrivateRoute";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const router = createBrowserRouter([
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/create",
-        element: <CreateAssignment />,
+        element: (
+          <PrivateRoute>
+            <CreateAssignment />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/features",
@@ -52,26 +57,33 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignment/:id",
-        element: <AssignmentDetails />,
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           const x = fetch(`${server_url}/assignment/${params.id}`);
           // console.log(x);
           return x;
         },
       },
-
-      {
-        path: "/take_assignment",
-        element: <Take />,
-      },
       {
         path: "/attempted",
-        element: <Attempted />,
+        element: (
+          <PrivateRoute>
+            <Attempted />
+          </PrivateRoute>
+        ),
         loader: () => fetch(`${server_url}/submitted`),
       },
       {
         path: "/pending",
-        element: <Pending />,
+        element: (
+          <PrivateRoute>
+            <Pending />
+          </PrivateRoute>
+        ),
         loader: () => fetch(`${server_url}/submitted`),
       },
       {
@@ -85,7 +97,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/evaluate/:id",
-        element: <Evaluate />,
+        element: (
+          <PrivateRoute>
+            <Evaluate />
+          </PrivateRoute>
+        ),
         loader: () => fetch(`${server_url}/submitted`),
       },
     ],
