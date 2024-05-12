@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Attempted = () => {
   const pendings = useLoaderData();
   console.log(pendings);
-  const { title, pending_status, obtained, feedback } = pendings;
+  const { user } = useContext(AuthContext);
+  const userEmail = user?.email;
+  console.log(userEmail);
+  const [pendingOfUser, setPendingOfUser] = useState([]);
+  useEffect(() => {
+    if (userEmail) {
+      const filteredPendings = pendings.filter(
+        (item) => item.email == userEmail
+      );
+      setPendingOfUser(filteredPendings);
+    }
+  }, [pendings, userEmail]);
+  console.log("Pending of user:", pendingOfUser);
+  // const { title, pending_status, obtained, feedback } = pendingOfUser;
   return (
     <div>
       <div className="overflow-x-auto my-20 mx-10 bg-red ">
@@ -26,7 +40,7 @@ const Attempted = () => {
             </tr>
           </thead>
           <tbody>
-            {pendings.map((item) => (
+            {pendingOfUser.map((item) => (
               <tr className=" bg-deep border-2 border-red">
                 <th className="text-lg">{item.title}</th>
                 <th className="text-lg">{item.pending_status}</th>
