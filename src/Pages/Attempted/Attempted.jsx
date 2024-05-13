@@ -12,7 +12,7 @@ const Attempted = () => {
   const [pendingOfUser, setPendingOfUser] = useState([]);
 
   useEffect(() => {
-    axios.get(url).then((data) => {
+    axios.get(url, { withCredentials: true }).then((data) => {
       // console.log(data.data);
       setPendingOfUser(data.data);
     });
