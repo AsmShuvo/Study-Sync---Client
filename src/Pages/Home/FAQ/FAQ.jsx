@@ -10,7 +10,7 @@ const FAQ = () => {
             How can StudySync help me with my studies?
           </div>
           <div className="collapse-content">
-            <p className="tracking-wider text-lg">
+            <p className="tracking-wider text-gray-400 text-lg">
               StudySync offers interactive learning experiences, study
               resources, expert guidance, and collaborative study features to
               support your academic journey. Whether you need help with
@@ -25,7 +25,7 @@ const FAQ = () => {
             Are the resources on StudySync free to access?
           </div>
           <div className="collapse-content">
-            <p className="tracking-wider text-lg">
+            <p className="tracking-wider  text-gray-400 text-lg">
               Yes, all of the resources on StudySync are available for free
               access. However, we also offer premium features and services for
               users who require additional support or advanced functionality.
@@ -39,7 +39,7 @@ const FAQ = () => {
             How do I join a study group or collaborate with peers on StudySync?
           </div>
           <div className="collapse-content">
-            <p className="tracking-wider text-lg">
+            <p className="tracking-wider  text-gray-400 text-lg">
               To join a study group or collaborate with peers on StudySync,
               simply create an account and explore our community features. You
               can join existing study groups, create your own groups,

@@ -6,6 +6,7 @@ export default {
       colors: {
         deep: "#292929",
         red: "#1877F2",
+        orange: "#F69323",
       },
     },
   },

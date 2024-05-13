@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const CreateAssignment = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
-  console.log(server_url);
+  // console.log(server_url);
   const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const CreateAssignment = () => {
     const marks = form.mark.value;
     const photo = form.photo.value;
     const details = form.details.value;
-    console.log(title, difficulty, marks, details, deadline, photo);
+    // console.log(title, difficulty, marks, details, deadline, photo);
     const newAssignment = {
       title,
       difficulty,
@@ -25,7 +25,7 @@ const CreateAssignment = () => {
       deadline,
     };
     axios.post(`${server_url}/assignments`, newAssignment).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       if (data.data.insertedId) {
         Swal.fire("Assignment Created Succesfully");
         form.reset();

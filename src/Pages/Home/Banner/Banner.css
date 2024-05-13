@@ -6,7 +6,6 @@
   font-family: "haffer";
   src: url(./assets/fonts/HafferSQXH-Regular.woff) format("woff2");
 }
-
 :root {
   --main-bg-color: #222222;
   --main-div-color: #131313;

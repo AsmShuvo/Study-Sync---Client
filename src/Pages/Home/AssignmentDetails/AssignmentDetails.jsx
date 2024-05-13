@@ -6,18 +6,18 @@ import Swal from "sweetalert2";
 
 const AssignmentDetails = () => {
   const assignments = useLoaderData();
-  console.log(assignments);
+  // console.log(assignments);
   const { _id, image, title, marks, difficulty, details, deadline } =
     assignments;
   const server_url = import.meta.env.VITE_SERVER_URL;
-  // console.log(server_url);
+  console.log(server_url);
   const deadlineDate = new Date(deadline);
   const formattedDeadline = deadlineDate.toLocaleDateString();
   const { user } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleShow = () => {
     setShow(!show);
-    console.log(show);
+    // console.log(show);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const AssignmentDetails = () => {
     const obtained = null;
     const pending_status = "Pending";
     const feedback = "";
-    console.log(doc, note, email);
+    // console.log(doc, note, email);
     const takenAssignment = {
       email,
       doc,
@@ -43,7 +43,7 @@ const AssignmentDetails = () => {
       deadline,
     };
     axios.post(`${server_url}/submitted`, takenAssignment).then((data) => {
-      console.log(data.data);
+      // console.log(data.data);
       if (data.data.insertedId) {
         Swal.fire("Assignment Submitted Succesfully");
         form.reset();
@@ -208,7 +208,7 @@ const AssignmentDetails = () => {
       </div>
       {/* =====take assignment===== */}
       <div className={show ? "" : "hidden"}>
-        <div className="bg-red mx-10 my-10">
+        <div className="bg-red mx-2 md:mx-10 my-10">
           <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
               <div className="flex flex-col mb-16 sm:text-center sm:mb-0">

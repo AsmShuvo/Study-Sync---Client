@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             <Attempted />
           </PrivateRoute>
         ),
-        loader: () => fetch(`${server_url}/submitted`),
+        // loader: () => fetch(`${server_url}/submitted`),
       },
       {
         path: "/pending",

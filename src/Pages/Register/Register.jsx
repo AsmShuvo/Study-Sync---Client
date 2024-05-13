@@ -75,15 +75,15 @@ const Register = () => {
       });
   };
   return (
-    <div>
+    <div className="mx-2">
       <div
         className={`hero ${
           myTheme == "light" ? "bg-white" : "bg-black -my-2"
-        } min-h-screen `}
+        } `}
       >
-        <div className="flex rounded-2xl flex-col lg:flex-row shadow-2xl shadow-blue-900">
+        <div className="flex lg:rounded-2xl flex-col lg:flex-row lg:shadow-2xl shadow-blue-900">
           <div
-            className={`lg:text-left md:h-[550px] md:w-[900px] flex flex-col items-center justify-center py-2 px-10 ${
+            className={`lg:text-left  lg:h-[550px] lg:w-[900px] flex flex-col items-center justify-center py-2 px-10 ${
               myTheme == "light" ? "bg-red" : "bg-black"
             }  text-white`}
           >
@@ -107,13 +107,13 @@ const Register = () => {
               </p>
             </div>
             <Link to="/login">
-              <button className="btn btn-outline text-lg border-white rounded-bl-none rounded-tr-none text-white font-semibold btn-wide">
+              <button className="btn btn-outline text-lg border-white lg:rounded-bl-none lg:rounded-tr-none text-white font-semibold btn-wide">
                 Have an account
               </button>
             </Link>
           </div>
           <div
-            className={`card mx-auto shrink-0 w-full max-w-sm shadow-2xl bg-base-100 rounded-none rounded-r-2xl ${
+            className={`card mx-auto shrink-0 w-full lg:max-w-sm shadow-2xl bg-base-100 lg:rounded-none lg:rounded-r-2xl ${
               myTheme == "light" ? "" : "bg-gray-800 -my-2"
             } `}
           >

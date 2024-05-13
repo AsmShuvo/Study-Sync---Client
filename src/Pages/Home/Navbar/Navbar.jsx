@@ -1,16 +1,28 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../../assets/images/logo/logo.png";
 import { AuthContext } from "./../../../Providers/AuthProviders";
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, myTheme, setMyTheme } = useContext(AuthContext);
+  const toggleTheme = () => {
+    setMyTheme(myTheme == "light" ? "dark" : "light");
+  };
+  console.log(myTheme);
+
   // console.log(user);
   return (
     <div>
-      <div className="navbar bg-[#140D0d]">
+      <div
+        className={`navbar border-b ${
+          myTheme == "light" ? "bg-white" : "bg-blue-900"
+        }`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost bg-red lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -31,13 +43,12 @@ const Navbar = () => {
               className="menu menu-sm bg-gray-700 dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink activeClassName="bg-green-500" to="/">
+                  Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/assignments">Assignments</NavLink>
-              </li>
-              <li>
-                <NavLink to="/reviews">Reviews</NavLink>
               </li>
               <li>
                 <NavLink to="/create">Create Assignment</NavLink>
@@ -48,32 +59,72 @@ const Navbar = () => {
               <li>
                 <NavLink to="/pending">Pending</NavLink>
               </li>
+              <label
+                htmlFor="Toggle4"
+                className="inline-flex items-center p-1 cursor-pointer dark:bg-gray-700 dark:text-gray-100"
+              >
+                <input
+                  id="Toggle4"
+                  type="checkbox"
+                  className="hidden peer"
+                  checked
+                />
+                <span className="px-4 py-2 dark:bg-gray-400 peer-checked:dark:bg-gray-700">
+                  Light
+                </span>
+                <span className="px-4 py-2 dark:bg-gray-700 peer-checked:dark:bg-violet-600">
+                  Dark
+                </span>
+              </label>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl">
-            <img src={logo} className="w-36 h-10" />
+          <Link to="/" className="btn btn-link text-xl">
+            StudySync
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 ">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink className="text-black text-lg font-mono" to="/">
+                Home
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/assignments">Assignments</NavLink>
+            <li className="ml-2 border-l pl-2">
+              <NavLink
+                className="text-black text-lg font-mono"
+                to="/assignments"
+              >
+                Assignments
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/reviews">Reviews</NavLink>
+            <li className="ml-2 border-l pl-2">
+              <NavLink className="text-black text-lg font-mono" to="/create">
+                Create Assignment
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/create">Create Assignment</NavLink>
+            <li className="ml-2 border-l pl-2">
+              <NavLink className="text-black text-lg font-mono" to="/attempted">
+                Show Attempted
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/attempted">Show Attempted</NavLink>
+            <li className="mx-2 border-l pl-2">
+              <NavLink className="text-black text-lg font-mono" to="/pending">
+                Pending
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/pending">Pending</NavLink>
-            </li>
+            <label
+              onClick={toggleTheme}
+              htmlFor="Toggle4"
+              className="inline-flex items-center p-1 cursor-pointer dark:bg-gray-700 dark:text-gray-100"
+            >
+              <input id="Toggle4" type="checkbox" className="hidden peer" />
+              <span className="px-4 py-2 dark:bg-gray-400 peer-checked:dark:bg-gray-700">
+                Light
+              </span>
+              <span className="px-4 py-2 dark:bg-gray-700 peer-checked:dark:bg-violet-600">
+                Dark
+              </span>
+            </label>
           </ul>
         </div>
         <div className="navbar-end">

@@ -1,23 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
+import axios from "axios";
 
 const Attempted = () => {
-  const pendings = useLoaderData();
-  console.log(pendings);
   const { user } = useContext(AuthContext);
   const userEmail = user?.email;
   console.log(userEmail);
+  const server_url = import.meta.env.VITE_SERVER_URL;
+  const url = `${server_url}/submitted?email=${userEmail}`;
   const [pendingOfUser, setPendingOfUser] = useState([]);
+
   useEffect(() => {
-    if (userEmail) {
-      const filteredPendings = pendings.filter(
-        (item) => item.email == userEmail
-      );
-      setPendingOfUser(filteredPendings);
-    }
-  }, [pendings, userEmail]);
-  console.log("Pending of user:", pendingOfUser);
+    axios.get(url).then((data) => {
+      // console.log(data.data);
+      setPendingOfUser(data.data);
+    });
+  }, [userEmail]);
+
+  // console.log("Pending of user:", pendingOfUser);
   // const { title, pending_status, obtained, feedback } = pendingOfUser;
   return (
     <div>

@@ -7,7 +7,7 @@ const Pending = () => {
   const { _id, title, pending_status, obtained, feedback } = pendings;
   return (
     <div>
-      <div className="overflow-x-auto my-20 mx-10 bg-red ">
+      <div className="overflow-x-auto my-20 md:mx-10 bg-red ">
         <table className="table table-xs ">
           <thead className=" ">
             <tr className="text-xl  bg-deep border-2 border-red">
@@ -40,9 +40,13 @@ const Pending = () => {
                 <th className="text-gray-300 font-mono">{item.email}</th>
                 <th className="text-lg">{item.feedback}</th>
                 <th className="text-lg">
-                  <Link to={`/evaluate/${item._id}`}>
-                    <button className="btn btn-link">Evaluate</button>
-                  </Link> 
+                  {item.pending_status != "Completed" ? (
+                    <Link to={`/evaluate/${item._id}`}>
+                      <button className="btn btn-link">Evaluate</button>
+                    </Link>
+                  ) : (
+                    <button className="btn btn-sm disabled">Evaluaded</button>
+                  )}
                 </th>
               </tr>
             ))}

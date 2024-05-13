@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Banner.css";
 import logo1 from "../../../assets/01.svg";
 import logo2 from "../../../assets/02.svg";
 import logo3 from "../../../assets/03.svg";
 import logo4 from "../../../assets/04.svg";
 import banner from "../../../assets/ca.jpg";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders";
 const Banner = () => {
+  const { myTheme } = useContext(AuthContext);
   return (
     <div>
-      <main>
+      <main className={`${myTheme == "light" ? "bg-white" : "bg-[#070618]"}`}>
         <section id="hero">
           {/* <!----------------- container starts -----------------------> */}
           <div className="container">
@@ -93,7 +96,8 @@ const Banner = () => {
             <div className="left"></div>
             <div className="right">
               <div className="services">
-                <h5>Services</h5>
+                <Link to="/reviews" />
+                <h5>Reviews</h5>
               </div>
             </div>
           </div>
