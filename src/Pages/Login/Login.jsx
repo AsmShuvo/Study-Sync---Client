@@ -5,8 +5,11 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProviders";
+import axios from "axios";
 
 const Login = () => {
+  const server_url = import.meta.env.VITE_SERVER_URL;
+  console.log(server_url);
   const { createUser, signIn, googleLogin, githubLogin, myTheme } =
     useContext(AuthContext);
   // login with email and password
@@ -19,6 +22,12 @@ const Login = () => {
     // console.log(email, password);
     signIn(email, password)
       .then((res) => {
+        const loggedInUser = res.user;
+        const user = { email };
+        // get access token
+        axios.post(`${server_url}/jwt`, user).then((data) => {
+          console.log(data.data);
+        });
         console.log("Logged in user : ", res.user);
         Swal.fire("Login Successful");
         form.reset();
