@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 
 const Evaluate = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
-  console.log(server_url);
+  // console.log(server_url);
   const pending = useLoaderData();
-  console.log("Pending assignments", pending);
+  // console.log("Pending assignments", pending);
   const id = useParams();
-  console.log(id);
+  // console.log(id);
   //   console.log(typeof id);
   //   filtering the id
   const assignment = pending.find((item) => item._id == id.id);
-  console.log(assignment);
+  // console.log(assignment);
   const {
     _id,
     email,

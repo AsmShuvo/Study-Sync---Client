@@ -7,7 +7,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 const CreateAssignment = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
   // console.log(server_url);
-  const { user } = useContext(AuthContext);
+  const { user, myTheme } = useContext(AuthContext);
   const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
@@ -38,7 +38,11 @@ const CreateAssignment = () => {
   };
   return (
     <div className="min-h-screen my-10">
-      <div className="m-8 bg-deep border-[#9753536b] rounded-xl shadow-2xl">
+      <div
+        className={`m-8 bg-${
+          myTheme == "dark" ? "deep" : "white"
+        } border-[#9753536b] rounded-xl shadow-2xl`}
+      >
         <div>
           <form className="card-body" onSubmit={handlePost}>
             <div className="space-y-2  ">
@@ -56,7 +60,9 @@ const CreateAssignment = () => {
                 type="text"
                 name="title"
                 placeholder="Example: Laws of motion"
-                className="input input-bordered"
+                className={`input input-bordered bg-${
+                  myTheme == "dark" ? "darkBlue" : "white"
+                }`}
                 required
               />
             </div>
@@ -68,7 +74,9 @@ const CreateAssignment = () => {
                 type="text"
                 name="image"
                 placeholder="Place URL here"
-                className="input input-bordered"
+                className={`input input-bordered bg-${
+                  myTheme == "dark" ? "darkBlue" : "white"
+                }`}
                 required
               />
             </div>
@@ -80,7 +88,9 @@ const CreateAssignment = () => {
                 type="text"
                 name="mark"
                 placeholder="Total marks here"
-                className="input input-bordered w-full"
+                className={`input input-bordered w-full bg-${
+                  myTheme == "dark" ? "darkBlue" : "white"
+                }`}
                 required
               />
             </div>
@@ -97,17 +107,27 @@ const CreateAssignment = () => {
               <textarea
                 placeholder="details"
                 name="details"
-                className="textarea textarea-bordered textarea-md w-full h-64"
+                className={`textarea textarea-bordered  textarea-md w-full h-64 bg-${
+                  myTheme == "dark" ? "darkBlue" : "white"
+                }`}
               ></textarea>
             </div>
 
             <div>
               <label className="label">
-                <span className="label-text">Difficulty</span>
+                <span
+                  className={`label-text bg-${
+                    myTheme == "dark" ? "darkBlue" : "white"
+                  } `}
+                >
+                  Difficulty
+                </span>
               </label>
               <select
                 name="difficulty"
-                className="select select-bordered w-full max-w-xs"
+                className={`select select-bordered w-full max-w-xs bg-${
+                  myTheme == "dark" ? "darkBlue" : "white"
+                }`}
               >
                 <option disabled selected>
                   Select

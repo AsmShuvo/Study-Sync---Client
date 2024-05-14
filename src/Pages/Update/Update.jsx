@@ -8,12 +8,12 @@ import { AuthContext } from "../../Providers/AuthProviders";
 
 const Update = () => {
   const loadedData = useLoaderData();
-  console.log("Data before Update:", loadedData);
+  // console.log("Data before Update:", loadedData);
   const { _id, title, difficulty, marks, details, image, email } = loadedData;
   const { user } = useContext(AuthContext);
   const server_url = import.meta.env.VITE_SERVER_URL;
   //   console.log(server_url);
-  console.log(email);
+  // console.log(email);
   const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const Update = () => {
 
     // =====Format deadline to show only the date part=====
     const formattedDeadline = deadlineDate.toLocaleDateString();
-    console.log(title, difficulty, marks, details, deadline, photo);
+    // console.log(title, difficulty, marks, details, deadline, photo);
 
     const updatedAssignment = {
       title,
@@ -39,7 +39,7 @@ const Update = () => {
       deadline: formattedDeadline,
       email,
     };
-    console.log(updatedAssignment);
+    // console.log(updatedAssignment);
 
     Swal.fire({
       title: "Are you sure?",
@@ -54,7 +54,7 @@ const Update = () => {
         axios
           .put(`${server_url}/assignment/${_id}`, updatedAssignment)
           .then((data) => {
-            console.log(data.data.modifiedCount);
+            // console.log(data.data.modifiedCount);
             if (data.data.modifiedCount) {
               Swal.fire("Assignment Updated Successfully !");
               form.reset();

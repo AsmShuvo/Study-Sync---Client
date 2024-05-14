@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Pending = () => {
   const pendings = useLoaderData();
-  console.log(pendings);
+  const { myTheme } = useContext(AuthContext);
+  // console.log(pendings);
   const { _id, title, pending_status, obtained, feedback } = pendings;
   return (
     <div>
@@ -27,13 +29,17 @@ const Pending = () => {
                 Feedback
               </th>
               <th className=" font-semibold tracking-wider text-success">
-                Evaluate
+                Status
               </th>
             </tr>
           </thead>
           <tbody>
             {pendings.map((item) => (
-              <tr className=" bg-deep border-2 border-red">
+              <tr
+                className={`bg-${
+                  myTheme == "dark" ? "darkBlue" : "blue-200"
+                } border-2 border-red`}
+              >
                 <th className="text-lg font-mono">{item.title}</th>
                 <th className="text-lg font-mono">{item.pending_status}</th>
                 <th className="text-lg">{item.obtained}</th>
@@ -42,10 +48,14 @@ const Pending = () => {
                 <th className="text-lg">
                   {item.pending_status != "Completed" ? (
                     <Link to={`/evaluate/${item._id}`}>
-                      <button className="btn btn-link">Evaluate</button>
+                      <button className="btn btn-link hover:scale-125">
+                        Evaluate
+                      </button>
                     </Link>
                   ) : (
-                    <button className="btn btn-sm disabled">Evaluaded</button>
+                    <button className="btn btn-sm bg-green-500 text-white hover:bg-green-500 hover:text-white disabled">
+                      Completed
+                    </button>
                   )}
                 </th>
               </tr>

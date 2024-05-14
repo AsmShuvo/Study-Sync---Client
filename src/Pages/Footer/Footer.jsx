@@ -142,13 +142,13 @@ const Footer = () => {
             <div className="flex gap-6 xl:gap-12 max-xl:justify-center">
               <ul className="text-gray-600 transition-all duration-500 grid gap-6">
                 <li>
-                  <a href="javascript:;">Home</a>
+                  <span className="cursor-pointer">Home</span>
                 </li>
                 <li>
-                  <a href="javascript:;">FAQs</a>
+                  <span className="cursor-pointer">FAQs</span>
                 </li>
                 <li>
-                  <a href="javascript:;">Features</a>
+                  <span className="cursor-pointer">Features</span>
                 </li>
               </ul>
             </div>
@@ -194,7 +194,7 @@ const Footer = () => {
         <div className="flex items-center justify-center">
           <span className="text-sm text-gray-300 ">
             Copyright@2024 All Right Reserved by{" "}
-            <a href="https://pagedone.io/">pagedone</a>
+            <a href="https://pagedone.io/">StudySync.com</a>
           </span>
         </div>
       </div>

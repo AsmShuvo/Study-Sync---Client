@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Login = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
-  console.log(server_url);
+  // console.log(server_url);
   const { createUser, signIn, googleLogin, githubLogin, myTheme } =
     useContext(AuthContext);
   // login with email and password
@@ -28,14 +28,14 @@ const Login = () => {
         axios
           .post(`${server_url}/jwt`, user, { withCredentials: true })
           .then((data) => {
-            console.log(data.data);
+            // console.log(data.data);
           });
-        console.log("Logged in user : ", res.user);
+        // console.log("Logged in user : ", res.user);
         Swal.fire("Login Successful");
         form.reset();
       })
       .catch((err) => {
-        console.log("Error in logging in : ", err.message);
+        // console.log("Error in logging in : ", err.message);
         Swal.fire("Login failed. Recheck yout email and password");
       });
   };
@@ -44,11 +44,11 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        console.log("Google Login Done, User", res.user);
+        // console.log("Google Login Done, User", res.user);
         Swal.fire("Google Login Completed");
       })
       .catch((err) => {
-        console.log("Google login error: ", err.message);
+        // console.log("Google login error: ", err.message);
         Swal.fire("Google Login Failed");
         return;
       });
@@ -57,12 +57,12 @@ const Login = () => {
   const handleGithubLogin = () => {
     githubLogin()
       .then((res) => {
-        console.log("Google Login Done, User", res.user);
+        // console.log("Google Login Done, User", res.user);
         Swal.fire("Google Login Completed");
       })
       .catch((err) => {
-        console.log("Google login error: ", err.message);
-        Swal.fire("Google Login Failed");
+        console.log("github login error: ", err.message);
+        Swal.fire("Github Login Failed");
         return;
       });
   };

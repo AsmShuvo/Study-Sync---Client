@@ -7,10 +7,17 @@ import Swal from "sweetalert2";
 const AssignmentDetails = () => {
   const assignments = useLoaderData();
   // console.log(assignments);
-  const { _id, image, title, marks, difficulty, details, deadline } =
-    assignments;
+  const {
+    _id,
+    image,
+    title,
+    marks,
+    difficulty,
+    details,
+    deadline,
+  } = assignments;
   const server_url = import.meta.env.VITE_SERVER_URL;
-  console.log(server_url);
+  // console.log(server_url);
   const deadlineDate = new Date(deadline);
   const formattedDeadline = deadlineDate.toLocaleDateString();
   const { user } = useContext(AuthContext);

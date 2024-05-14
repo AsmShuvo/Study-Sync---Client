@@ -19,7 +19,7 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
     marks,
     deadline,
   } = assignment;
-  const { user } = useContext(AuthContext);
+  const { user, myTheme } = useContext(AuthContext);
   // console.log(user?.email);
   // console.log(email);
   const server_url = import.meta.env.VITE_SERVER_URL;
@@ -117,8 +117,16 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
     //     </div>
     //   </div>
     // </div>
-    <div class="relative mx-auto flex flex-col justify-center overflow-hidden bg-darkBlue   rounded py-6 sm:py-2">
-      <div class="group w-80 relative cursor-pointer overflow-hidden  bg-[#1E293B] px-6 pt-10 pb-8 shadow-xl ring-1 hover:border border-red ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+    <div
+      class={`relative mx-auto flex flex-col justify-center overflow-hidden bg-${
+        myTheme == "dark" ? "darkBlue" : "gray-100"
+      }   rounded py-6 sm:py-2`}
+    >
+      <div
+        class={`group w-80 relative cursor-pointer overflow-hidden bg-${
+          myTheme == "dark" ? "[#1E293B]" : "white"
+        }  px-6 pt-10 pb-8 shadow-xl ring-1 hover:border border-red ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10`}
+      >
         <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-darkBlue  transition-all duration-300 group-hover:scale-[10]"></span>
         <div class="relative z-10 mx-auto max-w-md">
           <span class="grid h-20 w-20 place-items-center rounded-full bg-sky-500 transition-all duration-300 group-hover:bg-sky-400">
@@ -128,10 +136,12 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
             />
           </span>
           <div class="space-y-2 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
-            <p className="font-bold">{title}</p>
-            <p className=" font-mono">Difficulty: {difficulty}</p>
-            <p className=" font-mono">Total marks: {marks}</p>
-            <p className=" font-mono">Deadline: {formattedDeadline}</p>
+            <p className="text-gray-400 font-bold">{title}</p>
+            <p className="text-gray-400 font-mono">Difficulty: {difficulty}</p>
+            <p className="text-gray-400 font-mono">Total marks: {marks}</p>
+            <p className="text-gray-400 font-mono">
+              Deadline: {formattedDeadline}
+            </p>
           </div>
           <div class="pt-5 text-base font-semibold leading-7">
             <div className="card-actions justify-end">

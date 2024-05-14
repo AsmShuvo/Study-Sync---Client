@@ -3,12 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./../../../Providers/AuthProviders";
 import logoDark from "../../../assets/images/logo/main.png";
 import logoLight from "../../../assets/images/logo/main-white.png";
+import person from "../../../assets/images/logo/person.jpg";
 const Navbar = () => {
   const { user, logOut, myTheme, setMyTheme } = useContext(AuthContext);
   const toggleTheme = () => {
     setMyTheme(myTheme == "light" ? "dark" : "light");
   };
-  console.log(myTheme);
+  // console.log(myTheme);
 
   // console.log(user);
   return (
@@ -59,6 +60,28 @@ const Navbar = () => {
               <li>
                 <NavLink to="/pending">Pending</NavLink>
               </li>
+              <div className="navbar-end flex flex-col md:flex-row gap-1 w-full">
+                <Link
+                  to="/login"
+                  className="group relative rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
+                >
+                  <span className="absolute inset-y-0 left-0 w-[2px] bg-red transition-all group-hover:w-full group-active:bg-red"></span>
+
+                  <button className="relative text-sm font-semibold text-red transition-colors group-hover:text-white">
+                    Login
+                  </button>
+                </Link>
+                <Link
+                  to="/register"
+                  className="group relative rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
+                >
+                  <span className="absolute inset-y-0 left-0 w-[2px] bg-red transition-all group-hover:w-full group-active:bg-red"></span>
+
+                  <button className="relative text-sm font-semibold text-red transition-colors group-hover:text-white">
+                    Register
+                  </button>
+                </Link>
+              </div>
               <label
                 htmlFor="Toggle4"
                 className="inline-flex items-center p-1 cursor-pointer dark:bg-gray-700 dark:text-gray-100"
@@ -117,7 +140,7 @@ const Navbar = () => {
                 Create Assignment
               </NavLink>
             </li>
-            <li className="mx-2 border-l pl-2">
+            <li className="ml-2 md:mr-4 border-l pl-2 ">
               <NavLink
                 className={` ${
                   myTheme == "light" ? "text-darkBlue" : "text-white"
@@ -130,9 +153,14 @@ const Navbar = () => {
             <label
               onClick={toggleTheme}
               htmlFor="Toggle4"
-              className="inline-flex items-center p-1 cursor-pointer dark:bg-gray-700 dark:text-gray-100"
+              className="inline-flex md:ml-8 items-center p-1 cursor-pointer dark:bg-gray-700 dark:text-gray-100"
             >
-              <input id="Toggle4" type="checkbox" className="hidden peer" />
+              <input
+                id="Toggle4"
+                type="checkbox"
+                className="hidden peer"
+                checked={myTheme == "dark"}
+              />
               <span className="px-4 py-2 dark:bg-gray-400 peer-checked:dark:bg-gray-700">
                 Light
               </span>
@@ -144,10 +172,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {!user ? (
-            <div className="navbar-end flex gap-1 w-full">
+            <div className="navbar-end   text-end lg:pr-4 xl:pr-20  hidden md:block flex gap-1 w-full log-reg">
               <Link
                 to="/login"
-                className="group relative rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
+                className="group relative mr-1 rounded inline-block overflow-hidden border border-red px-8 py-1 focus:outline-none focus:ring"
               >
                 <span className="absolute inset-y-0 left-0 w-[2px] bg-red transition-all group-hover:w-full group-active:bg-red"></span>
 
@@ -175,10 +203,7 @@ const Navbar = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    />
+                    <img alt="Tailwind CSS Navbar component" src={person} />
                   </div>
                 </div>
                 <ul

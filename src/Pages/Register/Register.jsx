@@ -43,25 +43,25 @@ const Register = () => {
       });
       return;
     }
-    console.log(email, name, photo, password, confirm);
+    // console.log(email, name, photo, password, confirm);
 
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         const userCredential = res.user;
         updateProfile(userCredential, {
           displayName: name,
           photoURL: photo,
         })
           .then(() => {
-            console.log("Profile Updated");
-            console.log("Creaetd user : ", userCredential);
+            // console.log("Profile Updated");
+            // console.log("Creaetd user : ", userCredential);
             Swal.fire("Registration Successful");
             logOut();
             form.reset();
           })
           .catch((err) => {
-            console.log("Error while updating profile: ", err);
+            // console.log("Error while updating profile: ", err);
             Swal.fire("Profile is not updated");
             return;
           });
@@ -69,7 +69,7 @@ const Register = () => {
         form.reset();
       })
       .catch((err) => {
-        console.log("Err: ", err);
+        // console.log("Err: ", err);
         Swal.fire("Registration Failed! Your email is already in use");
         return;
       });

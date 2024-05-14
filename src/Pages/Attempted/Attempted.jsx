@@ -6,7 +6,7 @@ import axios from "axios";
 const Attempted = () => {
   const { user } = useContext(AuthContext);
   const userEmail = user?.email;
-  console.log(userEmail);
+  // console.log(userEmail);
   const server_url = import.meta.env.VITE_SERVER_URL;
   const url = `${server_url}/submitted?email=${userEmail}`;
   const [pendingOfUser, setPendingOfUser] = useState([]);
