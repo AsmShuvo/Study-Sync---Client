@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Datepicker from "../../Date/Datepicker";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const CreateAssignment = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
   // console.log(server_url);
+  const { user } = useContext(AuthContext);
   const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const CreateAssignment = () => {
     const marks = form.mark.value;
     const image = form.image.value;
     const details = form.details.value;
+    const email = user?.email;
     // console.log(title, difficulty, marks, details, deadline, image);
     const newAssignment = {
       title,
@@ -23,6 +26,7 @@ const CreateAssignment = () => {
       details,
       image,
       deadline,
+      email,
     };
     axios.post(`${server_url}/assignments`, newAssignment).then((data) => {
       // console.log(data.data);

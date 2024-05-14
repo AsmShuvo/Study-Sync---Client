@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaPen } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const Assignment = ({ assignment, assignments, setAssignments }) => {
-  const { _id, subject, image, title, difficulty, details, marks, deadline } =
-    assignment;
+  const {
+    _id,
+    subject,
+    email,
+    image,
+    title,
+    difficulty,
+    details,
+    marks,
+    deadline,
+  } = assignment;
+  const { user } = useContext(AuthContext);
+  // console.log(user?.email);
+  // console.log(email);
   const server_url = import.meta.env.VITE_SERVER_URL;
   // console.log(server_url);
   // =====Convert deadline to a Date object=====
@@ -18,6 +31,21 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
   const formattedDeadline = deadlineDate.toLocaleDateString();
 
   const handleDelete = (id) => {
+    // Find the assignment with the given id
+    const assignmentToDelete = assignments.find(
+      (assignment) => assignment._id === id
+    );
+
+    // Check if the assignment exists and if its email matches the current user's email
+    if (!assignmentToDelete || assignmentToDelete.email != user?.email) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "You are not authorized to delete this assignment",
+      });
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
