@@ -7,7 +7,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 const Root = () => {
   const { myTheme } = useContext(AuthContext);
   return (
-    <div className={`${myTheme == "light" ? "bg-white" : "bg-[#070618]"}`}>
+    <div className={`${myTheme == "light" ? "bg-white" : "bg-darkBlue"}`}>
       <Navbar />
       <Outlet />
       <Footer />

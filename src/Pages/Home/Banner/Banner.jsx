@@ -20,7 +20,7 @@ const Banner = () => {
                 <div className="circle"></div>
                 <h4>Collaborative Learning Together</h4>
               </div>
-              <h1 className="text-7xl text-start col-span-12">
+              <h1 className="md:text-7xl text-start col-span-12">
                 StudySync Invites You to Collaborate and Succeed
               </h1>
             </div>

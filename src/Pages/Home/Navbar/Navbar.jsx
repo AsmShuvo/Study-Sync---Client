@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./../../../Providers/AuthProviders";
+import logoDark from "../../../assets/images/logo/main.png";
+import logoLight from "../../../assets/images/logo/main-white.png";
 const Navbar = () => {
   const { user, logOut, myTheme, setMyTheme } = useContext(AuthContext);
   const toggleTheme = () => {
@@ -13,7 +15,7 @@ const Navbar = () => {
     <div>
       <div
         className={`navbar border-b ${
-          myTheme == "light" ? "bg-white" : "bg-blue-900"
+          myTheme == "light" ? "bg-white" : "bg-darkBlue"
         }`}
       >
         <div className="navbar-start">
@@ -53,9 +55,7 @@ const Navbar = () => {
               <li>
                 <NavLink to="/create">Create Assignment</NavLink>
               </li>
-              <li>
-                <NavLink to="/attempted">Show Attempted</NavLink>
-              </li>
+
               <li>
                 <NavLink to="/pending">Pending</NavLink>
               </li>
@@ -79,36 +79,51 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-link text-xl">
-            StudySync
+            <img
+              src={myTheme == "light" ? logoLight : logoDark}
+              className="w-36"
+            />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 ">
             <li>
-              <NavLink className="text-black text-lg font-mono" to="/">
+              <NavLink
+                className={` ${
+                  myTheme == "light" ? "text-darkBlue" : "text-white"
+                } text-lg font-mono"`}
+                to="/"
+              >
                 Home
               </NavLink>
             </li>
             <li className="ml-2 border-l pl-2">
               <NavLink
-                className="text-black text-lg font-mono"
+                className={` ${
+                  myTheme == "light" ? "text-darkBlue" : "text-white"
+                } text-lg font-mono"`}
                 to="/assignments"
               >
                 Assignments
               </NavLink>
             </li>
             <li className="ml-2 border-l pl-2">
-              <NavLink className="text-black text-lg font-mono" to="/create">
+              <NavLink
+                className={` ${
+                  myTheme == "light" ? "text-darkBlue" : "text-white"
+                } text-lg font-mono"`}
+                to="/create"
+              >
                 Create Assignment
               </NavLink>
             </li>
-            <li className="ml-2 border-l pl-2">
-              <NavLink className="text-black text-lg font-mono" to="/attempted">
-                Show Attempted
-              </NavLink>
-            </li>
             <li className="mx-2 border-l pl-2">
-              <NavLink className="text-black text-lg font-mono" to="/pending">
+              <NavLink
+                className={` ${
+                  myTheme == "light" ? "text-darkBlue" : "text-white"
+                } text-lg font-mono"`}
+                to="/pending"
+              >
                 Pending
               </NavLink>
             </li>
@@ -171,12 +186,20 @@ const Navbar = () => {
                   className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <span className="bg-gray-400 hover:bg-gray-400 capitalize text-black">
+                    <span className="bg-gray-400 hover:bg-gray-400 capitalize ">
                       {user?.displayName}
                     </span>
                   </li>
                   <li>
-                    <span className="text-lg font-semibold" onClick={logOut}>
+                    <Link to="/attempted" className="font-semibold">
+                      My Attempted
+                    </Link>
+                  </li>
+                  <li>
+                    <span
+                      className="text-lg font-semibold text-rose-600"
+                      onClick={logOut}
+                    >
                       Logout
                     </span>
                   </li>

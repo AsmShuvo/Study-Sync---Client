@@ -10,7 +10,7 @@ const Feature = ({ title, desc, ratings, img }) => {
       <div class="p-4 w-5/6">
         <figure
           class={`md:flex flex-${
-            ratings % 2 ? "row" : "row-reverse"
+            ratings % 2 ? "row-reverse" : "row"
           } max-w-5xl bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800`}
         >
           <img

@@ -2,7 +2,7 @@ import React from "react";
 
 const FAQ = () => {
   return (
-    <div className="w-full lg:w-1/2 mx-auto mt-32">
+    <div className="w-full lg:w-2/3 mx-auto mt-32">
       <div className="join join-vertical w-full">
         <div className="collapse collapse-arrow join-item border border-base-300">
           <input type="radio" name="my-accordion-4" defaultChecked />

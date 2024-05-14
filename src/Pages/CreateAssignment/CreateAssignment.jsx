@@ -13,15 +13,15 @@ const CreateAssignment = () => {
     const title = form.title.value;
     const difficulty = form.difficulty.value;
     const marks = form.mark.value;
-    const photo = form.photo.value;
+    const image = form.image.value;
     const details = form.details.value;
-    // console.log(title, difficulty, marks, details, deadline, photo);
+    // console.log(title, difficulty, marks, details, deadline, image);
     const newAssignment = {
       title,
       difficulty,
       marks,
       details,
-      photo,
+      image,
       deadline,
     };
     axios.post(`${server_url}/assignments`, newAssignment).then((data) => {
@@ -62,7 +62,7 @@ const CreateAssignment = () => {
               </label>
               <input
                 type="text"
-                name="photo"
+                name="image"
                 placeholder="Place URL here"
                 className="input input-bordered"
                 required

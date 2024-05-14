@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* <!--Grid--> */}
         <div className="py-14 grid grid-cols-12 gap-x-5 gap-y-8">
-          <div className="col-span-full xl:col-span-3 relative bg-gradient-to-tr from-rose-900 to-red rounded-2xl gap-8 p-6 xl:w-72 h-96 flex flex-col justify-center items-center">
+          <div className="col-span-full xl:col-span-3 relative bg-gradient-to-tr from-[#4d0b70] to-red rounded-2xl gap-8 p-6 xl:w-72 h-96 flex flex-col justify-center items-center">
             <p className="text-3xl font-bold font-mono">StudySync</p>
             <p className="text-center text-gray-200">
               Trusted in more than 100 countries & 5 million users. Have any

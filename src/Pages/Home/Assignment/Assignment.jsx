@@ -89,18 +89,21 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
     //     </div>
     //   </div>
     // </div>
-    <div class="relative flex flex-col justify-center overflow-hidden bg-slate-100 py-6 sm:py-12">
-      <div class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
-        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-deep transition-all duration-300 group-hover:scale-[10]"></span>
+    <div class="relative mx-auto flex flex-col justify-center overflow-hidden bg-darkBlue   rounded py-6 sm:py-2">
+      <div class="group w-80 relative cursor-pointer overflow-hidden  bg-[#1E293B] px-6 pt-10 pb-8 shadow-xl ring-1 hover:border border-red ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+        <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-darkBlue  transition-all duration-300 group-hover:scale-[10]"></span>
         <div class="relative z-10 mx-auto max-w-md">
           <span class="grid h-20 w-20 place-items-center rounded-full bg-sky-500 transition-all duration-300 group-hover:bg-sky-400">
-            <img src={image} className="" />
+            <img
+              src={image}
+              className="  w-18 rounded-full h-20 border-sky-400"
+            />
           </span>
           <div class="space-y-2 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
             <p className="font-bold">{title}</p>
-            <p className=" font-mono">{difficulty}</p>
-            <p className=" font-mono">{marks}</p>
-            <p className=" font-mono">{formattedDeadline}</p>
+            <p className=" font-mono">Difficulty: {difficulty}</p>
+            <p className=" font-mono">Total marks: {marks}</p>
+            <p className=" font-mono">Deadline: {formattedDeadline}</p>
           </div>
           <div class="pt-5 text-base font-semibold leading-7">
             <div className="card-actions justify-end">

@@ -7,6 +7,7 @@ export default {
         deep: "#292929",
         red: "#1877F2",
         orange: "#F69323",
+        darkBlue: "#010313",
       },
     },
   },

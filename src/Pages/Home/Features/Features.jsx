@@ -3,8 +3,8 @@ import Feature from "../Feature/Feature";
 
 const Features = () => {
   return (
-    <div className="mx-2 md:mx-20">
-      <div className="grid grid-cols-1 gap-2">
+    <div className="mx-auto">
+      <div className="grid mx-auto grid-cols-1 gap-2 w-fit">
         <Feature
           title="Interactive Learning"
           desc="Highlight how your platform offers interactive learning experiences, such as quizzes, simulations, or interactive tutorials"
