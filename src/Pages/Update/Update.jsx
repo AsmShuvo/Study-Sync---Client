@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Datepicker from "../../Date/Datepicker";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
 import { IoIosWarning } from "react-icons/io";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const Update = () => {
   const loadedData = useLoaderData();
   console.log("Data before Update:", loadedData);
-  const { _id, title, difficulty, marks, details, image } = loadedData;
-
+  const { _id, title, difficulty, marks, details, image, email } = loadedData;
+  const { user } = useContext(AuthContext);
   const server_url = import.meta.env.VITE_SERVER_URL;
   //   console.log(server_url);
+  console.log(email);
   const [deadline, setDeadline] = useState(new Date(null));
   const handlePost = (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const Update = () => {
     // =====Format deadline to show only the date part=====
     const formattedDeadline = deadlineDate.toLocaleDateString();
     console.log(title, difficulty, marks, details, deadline, photo);
+
     const updatedAssignment = {
       title,
       difficulty,
@@ -34,6 +37,7 @@ const Update = () => {
       details,
       image: photo,
       deadline: formattedDeadline,
+      email,
     };
     console.log(updatedAssignment);
 
@@ -50,6 +54,7 @@ const Update = () => {
         axios
           .put(`${server_url}/assignment/${_id}`, updatedAssignment)
           .then((data) => {
+            console.log(data.data.modifiedCount);
             if (data.data.modifiedCount) {
               Swal.fire("Assignment Updated Successfully !");
               form.reset();
@@ -73,8 +78,8 @@ const Update = () => {
         <div>
           <form className="card-body" onSubmit={handlePost}>
             <div className="space-y-2  ">
-              <p className="text-green-500">Update Assignment</p>
-              <p className="text-green-500">
+              <p className="text-amber-200">Update Assignment</p>
+              <p className="text-amber-200">
                 This information will be displayed publicly so be carefull and
                 honest while sharing
               </p>
@@ -162,12 +167,17 @@ const Update = () => {
               >
                 Uppdate Assignment
               </button>
-              <p className="flex items-center gap-2 mt-4 text-green-500">
+              <p className="flex items-center gap-2 mt-4 text-amber-200">
                 {" "}
-                <IoIosWarning />
+                <IoIosWarning className="bg-warning rounded m-1 text-xl" />
                 Remember You won't be able to redo once you update the
-                assignment
+                assignment. So please recheck and submit if it need to be
+                updated
               </p>
+              <marquee className="mt-4 font-bold text-lg text-red bg-warning rounded-full">
+                {" "}
+                © This assignment is created by {email}
+              </marquee>
             </div>
           </form>
         </div>
