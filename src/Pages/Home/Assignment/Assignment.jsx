@@ -118,7 +118,7 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
               >
                 <MdDeleteForever />
               </button>
-              <Link to={`update/${_id}`}>
+              <Link to={`/update/${_id}`}>
                 <button className="btn btn-circle border-none outline-none  bg-red">
                   <FaPen />
                 </button>
