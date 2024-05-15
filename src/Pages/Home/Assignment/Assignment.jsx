@@ -123,8 +123,8 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
       }   rounded py-6 sm:py-2`}
     >
       <div
-        class={`group w-80 relative cursor-pointer overflow-hidden bg-${
-          myTheme == "dark" ? "[#1E293B]" : "white"
+        class={`group w-80 relative cursor-pointer overflow-hidden ${
+          myTheme == "dark" ? "bg-[#1E293B]" : "bg-white"
         }  px-6 pt-10 pb-8 shadow-xl ring-1 hover:border border-red ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10`}
       >
         <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-darkBlue  transition-all duration-300 group-hover:scale-[10]"></span>

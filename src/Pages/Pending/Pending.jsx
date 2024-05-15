@@ -5,7 +5,6 @@ import { AuthContext } from "../../Providers/AuthProviders";
 const Pending = () => {
   const pendings = useLoaderData();
   const { myTheme } = useContext(AuthContext);
-  // console.log(pendings);
   const { _id, title, pending_status, obtained, feedback } = pendings;
   return (
     <div>
@@ -41,7 +40,7 @@ const Pending = () => {
                 } border-2 border-red`}
               >
                 <th className="text-lg font-mono">{item.title}</th>
-                <th className="text-lg font-mono">{item.pending_status}</th>
+                <th className="text-lg font-mono">{item.pending_status}.</th>
                 <th className="text-lg">{item.obtained}</th>
                 <th className="text-gray-300 font-mono">{item.email}</th>
                 <th className="text-lg">{item.feedback}</th>

@@ -2,18 +2,21 @@ import axios from "axios";
 import React from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import "./Evaluate.css";
 
 const Evaluate = () => {
   const server_url = import.meta.env.VITE_SERVER_URL;
   // console.log(server_url);
   const pending = useLoaderData();
+  console.log(pending);
+
   // console.log("Pending assignments", pending);
   const id = useParams();
-  // console.log(id);
+  console.log(id);
   //   console.log(typeof id);
   //   filtering the id
   const assignment = pending.find((item) => item._id == id.id);
-  // console.log(assignment);
+  console.log(assignment);
   const {
     _id,
     email,
@@ -53,7 +56,9 @@ const Evaluate = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .put(`${server_url}/submitted/${_id}`, updatedAssignment)
+          .put(`${server_url}/submitted/${_id}`, updatedAssignment, {
+            withCredentials: true,
+          })
           .then((data) => {
             if (data.data.modifiedCount) {
               Swal.fire("Assignment Evaluated!");
@@ -83,10 +88,16 @@ const Evaluate = () => {
             <div className="my-4 font-serif">{note}</div>
             <hr className="mb-6 border-gray-300" />
             <Link to={doc} target="_blank">
-              <span className="cursor-pointer btn-link text-white bg-blue-700">
-                {doc}
-              </span>
+              <span className="cursor-pointer btn-link text-white ">{doc}</span>
             </Link>
+            <div>
+              {/* <Embed link="https://drive.google.com/file/d/1G9GdFZDo-KEap72AMTgpL7zDkgBmHGql/preview"></Embed> */}
+              <Link to="/viewfile">
+                <button className="btn btn-sm rounded-none mt-4">
+                  View File
+                </button>
+              </Link>
+            </div>
             <div>
               Total marks:
               <p className=" inline-block mt-8 ml-1 text-yellow-100">
@@ -120,6 +131,12 @@ const Evaluate = () => {
             </form>
           </div>
         </div>
+      </div>
+      <div className="iframe-container my-10">
+        <iframe
+          title="Embedded PDF"
+          src="https://drive.google.com/file/d/1G9GdFZDo-KEap72AMTgpL7zDkgBmHGql/preview"
+        ></iframe>
       </div>
     </div>
   );
