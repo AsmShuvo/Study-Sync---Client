@@ -86,7 +86,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:id",
-        element: <Update />,
+        element: (
+          <PrivateRoute>
+            <Update />
+          </PrivateRoute>
+        ),
         loader: ({ params }) => {
           const x = fetch(`${server_url}/assignment/${params.id}`);
           // console.log(x);

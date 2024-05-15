@@ -58,7 +58,7 @@ const Login = () => {
     githubLogin()
       .then((res) => {
         // console.log("Google Login Done, User", res.user);
-        Swal.fire("Google Login Completed");
+        Swal.fire("Github Login Completed");
       })
       .catch((err) => {
         console.log("github login error: ", err.message);

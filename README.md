@@ -1,8 +1,15 @@
-# React + Vite
+Website Name: StudySunc
+Live Link: https://studysync-3a9c1.web.app/
+Category: assignment_category_0001
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
 
-Currently, two official plugins are available:
+1. Landing page cotains an 'Assignment' section where assignments created by verified users is showcased.User can sort the assignments according to difficulty level. A verified use can 'View' the assignment and 'Update' the assignment is necessary. Some features of the website and Frequent;y asked questions are also showacased here
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. View assignment contains 'Take' option whick anables a user to take the assignment and submit it with necessary documents and notes.
+
+3. Create assignment option enables a verfied user/Admin to create and post a assignment which will be public
+
+4. Pending option assignment shows all the assignments submitted by users of the site with details. Admin/User can evaluate the assignment and help submitted with marks and feedack
+
+5. My Attempted option allows a user to see his/her attempted assignment with details.

@@ -118,8 +118,8 @@ const Assignment = ({ assignment, assignments, setAssignments }) => {
     //   </div>
     // </div>
     <div
-      class={`relative mx-auto flex flex-col justify-center overflow-hidden bg-${
-        myTheme == "dark" ? "darkBlue" : "gray-100"
+      class={`relative mx-auto flex flex-col justify-center overflow-hidden ${
+        myTheme == "dark" ? " bg-darkBlue" : " bg-gray-100"
       }   rounded py-6 sm:py-2`}
     >
       <div
