@@ -14,6 +14,7 @@ import Error from "../Pages/Error/Error";
 import Evaluate from "../Pages/Home/Evaluate/Evaluate";
 import PrivateRoute from "../Layout/PrivateRoute";
 import axios from "axios";
+import Completed from "../Pages/Completed/Completed";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 const router = createBrowserRouter([
@@ -81,6 +82,21 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Pending />
+          </PrivateRoute>
+        ),
+        loader: async () => {
+          const data = await axios.get(`${server_url}/submitted`, {
+            withCredentials: true,
+          });
+          console.log(data.data);
+          return data.data;
+        },
+      },
+      {
+        path: "/completed",
+        element: (
+          <PrivateRoute>
+            <Completed />
           </PrivateRoute>
         ),
         loader: async () => {

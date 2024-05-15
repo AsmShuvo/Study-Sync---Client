@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 
-const Pending = () => {
+const Completed = () => {
   const pendings = useLoaderData();
   const { myTheme } = useContext(AuthContext);
   const { _id, title, pending_status, obtained, feedback } = pendings;
@@ -35,7 +35,7 @@ const Pending = () => {
           <tbody>
             {pendings.map(
               (item) =>
-                item.pending_status == "Pending" && (
+                item.pending_status == "Completed" && (
                   <tr
                     className={`bg-${
                       myTheme == "dark" ? "darkBlue" : "blue-200"
@@ -69,4 +69,4 @@ const Pending = () => {
   );
 };
 
-export default Pending;
+export default Completed;

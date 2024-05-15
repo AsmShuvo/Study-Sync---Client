@@ -56,6 +56,9 @@ const Navbar = () => {
               <li>
                 <NavLink to="/create">Create Assignment</NavLink>
               </li>
+              <li>
+                <NavLink to="/completed">Completed</NavLink>
+              </li>
 
               <li>
                 <NavLink to="/pending">Pending</NavLink>
@@ -138,6 +141,16 @@ const Navbar = () => {
                 to="/create"
               >
                 Create Assignment
+              </NavLink>
+            </li>
+            <li className="ml-2 border-l pl-2">
+              <NavLink
+                className={` ${
+                  myTheme == "light" ? "text-darkBlue" : "text-white"
+                } text-lg font-mono"`}
+                to="/completed"
+              >
+                Completed
               </NavLink>
             </li>
             <li className="ml-2 md:mr-4 border-l pl-2 ">
