@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import "./Banner.css";
+import "animate.css";
 import logo1 from "../../../assets/01.svg";
 import logo2 from "../../../assets/02.svg";
 import logo3 from "../../../assets/03.svg";
 import logo4 from "../../../assets/04.svg";
-import banner from "../../../assets/ca.jpg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 const Banner = () => {
@@ -18,9 +18,11 @@ const Banner = () => {
             <div className="hero__text">
               <div className="sub__header">
                 <div className="circle"></div>
-                <h4>Collaborative Learning Together</h4>
+                <h4 className="animate__animated animate__backInDown">
+                  Collaborative Learning Together..
+                </h4>
               </div>
-              <h1 className="md:text-7xl text-start col-span-12">
+              <h1 className="animate__animated animate__backInUp md:text-7xl text-start col-span-12">
                 StudySync Invites You to Collaborate and Succeed
               </h1>
             </div>
